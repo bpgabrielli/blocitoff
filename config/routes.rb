@@ -1,6 +1,16 @@
 Blocitoff::Application.routes.draw do
 
-  root "application#hello"
+
+  get "items/index"
+  get "items/new"
+  get "items/show"
+  get "items/edit"
+
+  get 'about' => 'welcome#about'
+  root to: "welcome#index"
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
