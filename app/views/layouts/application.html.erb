@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blocitoff</title>
+  <title>Bruno To-do</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
-    <ul class="nav nav-tabs">
-      <li><%= link_to "To-do", root_path %></li>
-      <li><%= link_to "About", about_path %></li>
 
-    </ul>
+  <div class="container">
+    <div class="header">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li role="presentation" class="active"><%= link_to "Home", root_path %></li>
+          <li role="presentation"><%= link_to "About", about_path %></li>
+        </ul>
+      </nav>
+      <h3 class="text-muted">To-do</h3>
+    </div>
   </div>
 
 <%= yield %>

@@ -1,10 +1,9 @@
 Blocitoff::Application.routes.draw do
 
+  devise_for :users
+  resources :users, only: [:update, :show]
 
-  get "items/index"
-  get "items/new"
-  get "items/show"
-  get "items/edit"
+  resources :items
 
   get 'about' => 'welcome#about'
   root to: "welcome#index"
