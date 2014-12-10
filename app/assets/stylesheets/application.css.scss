@@ -1,11 +1,23 @@
 @import "bootstrap";
 
-
+.todo {
+  color: #494b4b;
+  &:hover {
+    color: #0d9263;
+    text-decoration: none;
+  }
+}
 
 /* Space out content a bit */
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+}
+
+h2 {
+  margin-top: 0px;
+  margin-bottom: 15px;
+  color: #494b4b;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */

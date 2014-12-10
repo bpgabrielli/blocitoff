@@ -17,7 +17,7 @@
                 <%= link_to " ", edit_item_path(item), class: "glyphicon glyphicon-edit"%>
               </td>
               <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
-              <td><%= link_to 'Complete', [item], method: :delete, class: 'btn btn-xs btn-success' %>
+              <td><%= link_to ' ', [item], method: :delete, class: 'glyphicon glyphicon-ok' %>
               </td>
             </tr>
           <% end %>

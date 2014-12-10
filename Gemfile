@@ -56,3 +56,5 @@ end
 gem 'bootstrap-sass'
 
 gem 'devise'
+
+gem 'whenever', :require => false
