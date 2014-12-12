@@ -11,13 +11,13 @@
         </thead>
         <tbody>
           <% @items.each do |item| %>
-            <tr>
+            <tr id='item-<%= item.id %>'>
               <td>
-                <%= item.name %>
-                <%= link_to " ", edit_item_path(item), class: "glyphicon glyphicon-edit"%>
+                <%= item.name %>&nbsp
+                <%= link_to " ", edit_item_path(item), remote: true, class: "glyphicon glyphicon-pencil"%>
               </td>
               <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
-              <td><%= link_to ' ', [item], method: :delete, class: 'glyphicon glyphicon-ok' %>
+              <td><%= link_to ' ', [item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
               </td>
             </tr>
           <% end %>
@@ -26,7 +26,7 @@
     <br/>
     <%= form_for [@item] do |f| %>
       <div class="form-group">
-        <%= f.text_area :name, rows: 1, cols: 40, class: 'form-control', placeholder: "To-do..." %>
+        <%= f.text_field :name, rows: 1, cols: 40, class: 'form-control', placeholder: "To-do..." %>
       </div>
       <div class="form-group">
         <%= f.submit 'Add item', class: 'btn btn-sm btn-primary' %>

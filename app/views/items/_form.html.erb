@@ -1,0 +1,5 @@
+<%= form_for [@item] do |f| %>
+  <div class="form-group">
+    <%= f.text_field :name, rows: 1, cols: 10, class: 'form-control', placeholder: "To-do..." %><%= f.submit 'Save', class: 'btn btn-xs btn-primary' %>
+  </div>
+<% end %>

@@ -15,17 +15,22 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find(params[:id])
+    respond_with(@item)
   end
 
   def create
     @items = Item.all
     @item = Item.new(params.require(:item).permit(:name, :completed))
     if @item.save
-      redirect_to items_path
     else
       flash[:error] = "Error creating item. Please try again."
       render :new
     end
+
+    respond_with(@item) do |format|
+      format.html { redirect_to items_path }
+    end
+
   end
 
   def update
@@ -40,16 +45,11 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
+    @item.destroy
 
-    if @item.destroy
-      redirect_to(@item)
-    else
-      flash[:error] = "Item couldn't be completed. Try again."
+    respond_with(@item) do |format|
+      format.html { redirect_to items_path }
     end
   end
-
-    # respond_with(@item) do |format|
-    #   format.html { redirect_to items_path(@items) }
-    #   end
 
 end

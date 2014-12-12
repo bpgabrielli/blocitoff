@@ -14,15 +14,18 @@
         <ul class="nav nav-pills pull-right">
           <!-- <li role="presentation"><%= link_to "About", about_path %></li> -->
                <% if current_user %>
-                  <li role="presentation" class="active"><%= link_to "List", items_path %></li>
-                  <li role="presentation"><%= link_to "Account" , edit_user_registration_path %></li>
+               <li role="presentation"><%= link_to current_user.email, edit_user_registration_path %></li>
                <% else %>
                  <li role="presentation"><%= link_to "Sign In", new_user_session_path %></li>
                <% end %>
 
         </ul>
       </nav>
+      <% if current_user %>
+      <h3><%= link_to "To-do", items_path, class: 'todo' %></h3>
+      <% else %>
       <h3><%= link_to "To-do", root_path, class: 'todo' %></h3>
+      <% end %>
     </div>
   </div>
 
