@@ -2,8 +2,10 @@ class ItemsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @items = Item.all
+    @items = Item.visible_to(current_user)
     @item = Item.new
+    # authorize @items
+    # authorize @item
   end
 
   def new
@@ -20,7 +22,7 @@ class ItemsController < ApplicationController
 
   def create
     @items = Item.all
-    @item = Item.new(params.require(:item).permit(:name, :completed))
+    @item = current_user.items.build(params.require(:item).permit(:name, :completed))
     if @item.save
     else
       flash[:error] = "Error creating item. Please try again."
