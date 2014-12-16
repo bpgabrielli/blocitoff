@@ -4,15 +4,6 @@ class ItemsController < ApplicationController
   def index
     @items = Item.visible_to(current_user)
     @item = Item.new
-    # authorize @items
-    # authorize @item
-  end
-
-  def new
-    @item = Item.new
-  end
-
-  def show
   end
 
   def edit
@@ -41,8 +32,13 @@ class ItemsController < ApplicationController
      redirect_to @items
    else
      flash[:error] = "Error saving item. Please try again"
-     render :edit
+     render :index
    end
+
+   respond_with(@item) do |format|
+    format.html { redirect_to items_path }
+   end
+
   end
 
   def destroy
