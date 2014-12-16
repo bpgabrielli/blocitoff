@@ -5,6 +5,10 @@ Blocitoff::Application.routes.draw do
 
   resources :items
 
+  authenticated :user do
+    root :to => "items#index"
+  end
+
   get 'about' => 'welcome#about'
   root to: "welcome#index"
 
