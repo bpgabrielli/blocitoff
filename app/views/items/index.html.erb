@@ -14,7 +14,7 @@
             <tr id='item-<%= item.id %>'>
               <td>
                 <%= item.name %>&nbsp
-                <%= link_to " ", edit_item_path(item), remote: true, class: "glyphicon glyphicon-pencil"%>
+                <!-- <%= link_to " ", edit_item_path(item), remote: true, class: "glyphicon glyphicon-pencil"%> -->
               </td>
               <td><%= distance_of_time_in_words(Time.now, item.created_at + 7.days) %></td>
               <td><%= link_to ' ', [item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %>
