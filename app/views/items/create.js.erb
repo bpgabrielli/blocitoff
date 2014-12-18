@@ -1,1 +1,2 @@
-$('.js-items').prepend("<%= escape_javascript(render(@item)) %>");
+$('.js-items').append("<%= escape_javascript(render(@item)) %>");
+$('#new_item').replaceWith('<%= escape_javascript(render(partial: 'form', locals: {item: Item.new})) %>')

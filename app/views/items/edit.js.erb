@@ -1,1 +1,1 @@
-$('#item-' +<%= @item.id %>).html("<%= escape_javascript(render partial: 'form') %>");
+$('#<%= dom_id(@item) %> #editable').replaceWith("<%= escape_javascript(render partial: 'form', locals: {item: @item}) %>");

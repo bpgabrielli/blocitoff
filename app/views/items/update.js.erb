@@ -1,0 +1,1 @@
+$('#<%= dom_id(@item) %>').replaceWith("<%= escape_javascript(render partial: 'item', locals: {item: @item}) %>");

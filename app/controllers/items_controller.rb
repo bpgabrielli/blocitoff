@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   respond_to :html, :js
 
   def index
-    @items = Item.visible_to(current_user)
+    @items = current_user.items.alive
     @item = Item.new
   end
 
@@ -27,18 +27,15 @@ class ItemsController < ApplicationController
   end
 
   def update
-   @item = Item.find(params[:id])
-   if @item.update_attributes(params.require(:item).permit(:name, :completed))
-     redirect_to @items
-   else
-     flash[:error] = "Error saving item. Please try again"
-     render :index
-   end
+    @item = Item.find(params[:id])
 
-   respond_with(@item) do |format|
-    format.html { redirect_to items_path }
-   end
+    if not @item.update_attributes(params.require(:item).permit(:name, :completed))
+      flash[:error] = "Error saving item. Please try again"
+    end
 
+    respond_with(@item) do |format|
+      format.html { redirect_to items_path }
+    end
   end
 
   def destroy
